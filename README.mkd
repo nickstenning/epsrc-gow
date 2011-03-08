@@ -17,13 +17,13 @@ Instead of using the code in this repository, why not download the database gene
 
 To get a YAML dump of basic grants information for the financial year beginning 1 Apr 1993, run:
 
-    $ ruby bin/getpastgrants.rb 1993 > epsrc_gow_fy1993.yaml
+    $ ruby bin/scrape-pastgrants.rb 1993 > epsrc_gow_fy1993.yaml
 
 More usefully, to download all the information in the EPSRC GOW repository year by year, one might run:
 
     $ mkdir scrape
     $ for y in $(seq 1985 2011); do
-        ruby bin/getpastgrants.rb $y > scrape/epsrc_gow_fy${y}.yaml
+        ruby bin/scrape-pastgrants.rb $y > scrape/epsrc_gow_fy${y}.yaml
       done
 
 Each grant has a unique grant reference, e.g. `GR/N15764/01`. A useful printable identifier for this grant is the SHA1 hash of this string, i.e. in this case: `6062dba6d3f0cbc12172193f612d1ef4ea91a533`.
