@@ -3,79 +3,32 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
-require 'connection'
 
-class GrantsSchema < ActiveRecord::Migration
-
-  def self.up
-    create_table :grants, :id => false do |t|
-      t.string :id, :limit => 12, :primary => true
-      t.string :title
-      t.decimal :value
-
-      t.references :principal_investigator
-      t.references :organisation
-      t.references :department
-      t.timestamps
-    end
-
-    create_table :organisations do |t|
-      t.string :name
-      t.string :latlng
-      t.timestamps
-    end
-
-    create_table :departments do |t|
-      t.string :name
-
-      t.references :organisation
-      t.timestamps
-    end
-
-    create_table :people do |t|
-      t.string :name
-      t.timestamps
-    end
-  end
-
-  def self.down
-    drop_table :people
-    drop_table :departments
-    drop_table :organisations
-    drop_table :grants
-  end
-
-end
-
-module Commands
-  def self.create
-    GrantsSchema.up
-  end
-
-  def self.drop
-    GrantsSchema.down
-  end
-
-  def self.default
-    drop
-    create
-  end
-end
+require 'db_commands'
 
 if $0 == __FILE__
   if ARGV.length == 0 or %w{-h --help}.include? ARGV[0]
     $stderr.puts "Usage: #{File.basename($0)} <command>"
     $stderr.puts
     $stderr.puts "Known commands:"
-    $stderr.puts " create     create tables in database"
-    $stderr.puts " drop       drop tables in database"
+    $stderr.puts " create                create tables in database"
+    $stderr.puts " drop                  drop tables in database"
+    $stderr.puts " lookup <grant id>     lookup grants by grant id"
+    $stderr.puts " geocode               update geocoding for organisations"
+    $stderr.puts " heatmap               output heatmap points to STDOUT"
+    $stderr.puts " loadscrape            load YAML scrape data from STDIN"
     exit 1
   end
 
   command = ARGV.shift
 
   if command and Commands.respond_to?(command)
-    Commands.send(command, *ARGV)
+    begin
+      Commands.send(command, *ARGV)
+    rescue ArgumentError
+      $stderr.puts "Wrong number of arguments to command '#{command}'."
+      exit 1
+    end
   else
     $stderr.puts "Unknown command '#{command}'."
     exit 1

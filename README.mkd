@@ -17,29 +17,32 @@ Instead of using the code in this repository, why not download the database gene
 
 To get a YAML dump of basic grants information for the financial year beginning 1 Apr 1993, run:
 
-    $ ruby bin/scrape-pastgrants.rb 1993 > epsrc_gow_fy1993.yaml
+    $ ./bin/scrape-pastgrants 1993 > epsrc_gow_fy1993.yaml
 
 More usefully, to download all the information in the EPSRC GOW repository year by year, one might run:
 
     $ mkdir scrape
     $ for y in $(seq 1985 2011); do
-        ruby bin/scrape-pastgrants.rb $y > scrape/epsrc_gow_fy${y}.yaml
+        ./bin/scrape-pastgrants ${y} > scrape/epsrc_gow_fy${y}.yaml
       done
 
-Each grant has a unique grant reference, e.g. `GR/N15764/01`. A useful printable identifier for this grant is the SHA1 hash of this string, i.e. in this case: `6062dba6d3f0cbc12172193f612d1ef4ea91a533`.
+Each grant has a unique grant reference, e.g. `GR/N15764/01`.
 
-To extract the grants into a flat-file database of JSON files in `grants/`, run:
+To extract the grants into a SQLite database run:
 
-    $ mkdir grants
-    $ cat scrape/*.yaml | ruby bin/extractscrape.rb grants
+    $ ./bin/db create
+    $ cat scrape/*.yaml | ./bin/db loadscrape
 
-After this command, the example grant above will be found in
+After this command, we can check that the example grant above made it into the database with the following command
 
-    grants/60/6062dba6d3f0cbc12172193f612d1ef4ea91a533.json
-
-We provide a tool for pretty printing the contents of this file quickly (which assumes your database is in `grants/`):
-
-    $ ruby lookup.rb GR/N15764/01
+    $ ./bin/db lookup GR/N15764/01
+    Looking up grant GR/N15764/01:
+    ---
+    id: GR/N15764/01
+    title: INTERDISCIPLINARY RESEARCH COLLABORATION IN ADVANCED KNOWLEDGE TECHNOLOGIES - AKT
+    value: 7534918.46
+    principal_investigator_id: 14179
+    [...]
 
 ## Warnings
 
