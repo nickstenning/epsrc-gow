@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'rubygems'
+
+$:.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'model'
+
+if ARGV.length < 1
+  puts "Usage: #{File.basename($0)} <grant identifier>"
+  puts
+  puts "Looks up data for grant in local database (grants/ directory)."
+  exit 1
+end
+
+
+id = ARGV.shift
+
+$stderr.puts "Looking up grant #{id}:"
+
+g = Grant.find(id)
+
+if g
+  y g.attributes
+else
+  $stderr.puts "ERROR: Couldn't find grant in database."
+end
