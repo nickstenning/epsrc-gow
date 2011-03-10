@@ -48,6 +48,16 @@ After this command, we can check that the example grant above made it into the d
 
 This scraper needs a lot of work. At the moment we're only scraping the most basic information about these grants.
 
+## TODO
+
+The next step is to flesh out the `Person`, `Organisation`/`Partner` and `Department` scrapers, and to use these to bulk up the data in the database. At the moment, these scrapers,
+
+    ./bin/scrape-person <person id>
+    ./bin/scrape-partner <organisation id>
+    ./bin/scrape-department <department id>
+
+emit very basic data scraped from Grants on the Web.
+
 ## Dependencies
 
 You'll need:
