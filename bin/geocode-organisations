@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+require 'cgi'
+require 'open-uri'
+
+$:.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'rubygems'
+require 'json'
+
+require 'model'
+
+def geocode(org)
+
+  $stderr.puts "geocoding '#{org.name}'"
+
+  params = {
+    'sensor' => 'false',
+    'region' => 'GB',
+    'address' => org.name
+  }
+
+  params = params.map { |k, v| "#{CGI.escape(k)}=#{CGI.escape(v)}" }
+
+  geocoding = open("http://maps.googleapis.com/maps/api/geocode/json?#{params.join('&')}").read
+  geocoding = JSON.load(geocoding)
+
+  if geocoding['status'] == "OK"
+    org.latlng = geocoding['results'].first['geometry']['location']
+    org.save
+  else
+    $stderr.puts "WARNING: geocode for '#{org.name}' returned status '#{geocoding['status']}'"
+  end
+
+end
+
+if $0 == __FILE__
+  Organisation.all.each do |org|
+    geocode(org) unless org.latlng
+  end
+end
