@@ -8,10 +8,13 @@ from itertools import repeat
 from basic import scrape_grants_for_fy
 # from detailed import scrape_grant_detailed
 
+
 def timestamp():
     return str(datetime.datetime.now())
 
+
 class Scraper(object):
+
     def __init__(self, conn):
         self.conn = conn
         self.curs = conn.cursor()
@@ -64,9 +67,11 @@ class Scraper(object):
         self._update_or_create_object('departments', **department)
 
     def _update_or_create_object(self, table, **kwargs):
-        r = self.curs.execute('select count(*) from %s where id=?' % table, (kwargs['id'],)).fetchone()
+        sql = 'select count(*) from %s where id=?'
+        params = (kwargs['id'],)
+        res = self.curs.execute(sql % table, params).fetchone()
 
-        if r[0] == 0:
+        if res[0] == 0:
             self._create_object(table, **kwargs)
         else:
             self._update_object(table, **kwargs)
@@ -79,8 +84,8 @@ class Scraper(object):
         params.append(timestamp())
         params.append(timestamp())
 
-        sql = 'insert into %s (%s, created_at, modified_at) values (%s, ?, ?)' % (table, col_clause, val_clause)
-        self.curs.execute(sql, params)
+        sql = 'insert into %s (%s, created_at, modified_at) values (%s, ?, ?)'
+        self.curs.execute(sql % (table, col_clause, val_clause), params)
 
     def _update_object(self, table, **kwargs):
         uid = kwargs['id']
@@ -92,5 +97,5 @@ class Scraper(object):
         params.append(timestamp())
         params.append(uid)
 
-        sql = 'update %s set %s, modified_at=? where id=?' % (table, set_clause)
-        self.curs.execute(sql, params)
+        sql = 'update %s set %s, modified_at=? where id=?'
+        self.curs.execute(sql % (table, set_clause), params)
