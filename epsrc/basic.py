@@ -16,6 +16,7 @@ RE_DEPARTMENT_ID = re.compile(r"DepartmentId=(\-?\d+)")
 
 b = browser = mechanize.Browser()
 
+
 def scrape_grants_for_fy(year):
     b.open(PAST_GRANTS_URL)
 
@@ -43,20 +44,20 @@ def scrape_grants_for_fy(year):
         grant = {}
         anchors = PyQuery(r).find('a')
 
-        grant['id']    = anchors.eq(0).attr.title
+        grant['id'] = anchors.eq(0).attr.title
         grant['title'] = anchors.eq(0).text()
 
-        grant['pi']              = {}
-        grant['pi']['id']        = util.extract_id(anchors.eq(1).attr.href, 'Person')
-        grant['pi']['name']      = anchors.eq(1).text()
+        grant['pi'] = pi = {}
+        pi['id'] = util.extract_id(anchors.eq(1).attr.href, 'Person')
+        pi['name'] = anchors.eq(1).text()
 
-        grant['organisation']              = {}
-        grant['organisation']['id']        = util.extract_id(anchors.eq(2).attr.href, 'Organisation')
-        grant['organisation']['name']      = anchors.eq(2).text()
+        grant['organisation'] = org = {}
+        org['id'] = util.extract_id(anchors.eq(2).attr.href, 'Organisation')
+        org['name'] = anchors.eq(2).text()
 
-        grant['department']              = {}
-        grant['department']['id']        = util.extract_id(anchors.eq(3).attr.href, 'Department')
-        grant['department']['name']      = anchors.eq(3).text()
+        grant['department'] = dept = {}
+        dept['id'] = util.extract_id(anchors.eq(3).attr.href, 'Department')
+        dept['name'] = anchors.eq(3).text()
 
         value = PyQuery(r).find('span').eq(0).attr.title
         grant['value'] = util.extract_monetary_value(value)
