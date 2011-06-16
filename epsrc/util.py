@@ -1,6 +1,7 @@
 # coding=utf8
 
 import re
+from datetime import datetime
 
 _extract_id_memo = {}
 
@@ -15,3 +16,6 @@ def extract_id(str, type):
 
 def extract_monetary_value(str):
     return float(re.sub(r"[£,]", '', str))
+
+def extract_date(str, format="%d %B %Y"):
+    return datetime.strptime(str, format).date().isoformat()

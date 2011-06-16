@@ -1,0 +1,51 @@
+{
+  "co_investigators": [], 
+  "department": {
+    "name": "Electronic and Electrical Engineering"
+  }, 
+  "end_date": "2010-04-27", 
+  "further_information": "", 
+  "id": "DT/E004687/2", 
+  "organisation": {
+    "name": "University of Sheffield", 
+    "website": "http://www.shef.ac.uk"
+  }, 
+  "other_investigators": [], 
+  "panel_history": [], 
+  "principal_investigator": {
+    "id": 39010, 
+    "name": "Professor S Ekkanath-Madathil"
+  }, 
+  "project_partners": [
+    {
+      "id": -9671, 
+      "name": "Converteam Ltd1"
+    }, 
+    {
+      "id": -5610, 
+      "name": "Dudley Associates Ltd"
+    }, 
+    {
+      "id": 12708, 
+      "name": "Dynex Semiconductor Ltd"
+    }
+  ], 
+  "related_grants": [], 
+  "research_topics": [
+    [
+      "Electrical engineering", 
+      "Electrical Motor and Drive Systems"
+    ], 
+    [
+      "Electrical engineering", 
+      "Power Electronics"
+    ]
+  ], 
+  "scheme": "Technology Programme", 
+  "sectors": [
+    "Electronics"
+  ], 
+  "start_date": "2007-10-28", 
+  "title": "High Power IGBT Modules for Marine Drive Applications (HiDrive)", 
+  "value": 101899.18
+}

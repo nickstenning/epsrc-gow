@@ -1,0 +1,87 @@
+{
+  "abstract": "Invented in the 1990s by several co-applicants to this proposal, photonic crystal fibre (PCF) consists of a hair-thin strand of glass with a regular array (a \"photonic crystal\") of nano/micro-scopic air channels running along its entire length. These channels, and the narrow glass structures between them, can range in dimensions from a few tens of nm up to several tens of microns and interact strongly with light travelling along the fibre axis. It becomes possible to design and make optical fibres with seemingly impossible performance, a situation that is revolutionising the usefulness of fibre optics in many areas of photonics. <br /><br />Perhaps the most remarkable example is a PCF with a hollow core. In conventional fibre it is impossible to guide light in a hollow core because total internal reflection (the mechanism by which standard fibres guide light) cannot operate if the core refractive index is lower than the cladding. Hollow core PCF is the most successful example of the use of a two-dimensional photonic band gap (a concept first proposed in the late 1980s) to guide light; the latest attenuation losses are such that light at 1550 nm wavelength can travel 2 km before losing half its power. The narrow bore and effectively infinite interaction length in hollow core PCF improves up to a million times the performance of many gas-based nonlinear optical devices used for measuring, amplifying and changing the wavelength of laser light. The absence of beam diffraction and spatial instabilities seen in conventional gas cells, combined with controllable dispersion and a gas-dependent nonlinear response, constitutes a major opportunity for new physics and applications. <br /><br />The remarkably high performance offered by PCF means that a wide range of exciting new scientific and technical opportunities exist for new applications spanning many areas of photonics. The range and richness of the resulting science, some of it entirely new, is breathtaking. We propose to build on our internationally leading position as the founders and pioneers of this new field by exploring its applications in a range of highly topical and timely sub-areas, in continuing collaboration with groups in the UK and abroad, and therefore request funding, over a four-year period starting early 2005, to run a closely knit and highly collaborative programme of research in five inter-related areas. <br /><br />Highlights of our proposed research plan include the development of techniques for interfacing PCF with standard optical fibres, thermal post-processing of PCF to produce nanoscopic feature sizes, studies of the interaction of ultra high frequency sound with light in the PCF nano/micro structure, the development of gas-filled hollow core PCF for wavelength conversion of laser light (devices which could be coiled up on a credit card), the development of supercontinuum and tuneable laser sources, gas discharge lasers in gas-filled PCF, the generation of entangled pairs of correlated photons for studies of quantum optics (described by Einstein as \"spooky action at a distance\"), the fabrication of two-dimensional arrays of metallic nanowires for trapping and manipulating light and matter, the use of PCF-based super-continuum sources in near-field optical microscopy and the development of hollow core PCF (if needed filled with liquids) for laser-tweezer transport of atoms, molecules, particulate matter and biological cells. The project will be supported by extensive numerical modelling and theoretical analysis, allowing detailed design of the linear and nonlinear optical properties of PCF. <br /><br />At the end of the project we expect to have built up a substantial portfolio of new results and to have stimulated research and development in several new areas of photonics, some of these leading to scientific breakthroughs in partnership with our many UK and international collaborators, others to commercial exploitation through collaborating companies.<br /><br />", 
+  "co_investigators": [], 
+  "department": {
+    "name": "Physics"
+  }, 
+  "end_date": "2005-06-10", 
+  "further_information": "", 
+  "id": "EP/C005694/1", 
+  "organisation": {
+    "name": "University of Bath", 
+    "website": "http://www.bath.ac.uk"
+  }, 
+  "other_investigators": [
+    {
+      "id": 108083, 
+      "name": "Dr AF Benabid"
+    }, 
+    {
+      "id": 1419, 
+      "name": "Professor D Bird"
+    }, 
+    {
+      "id": 41812, 
+      "name": "Professor TA Birks"
+    }, 
+    {
+      "id": 45280, 
+      "name": "Professor J Knight"
+    }, 
+    {
+      "id": -16489, 
+      "name": "Professor SA Maier"
+    }, 
+    {
+      "id": 76432, 
+      "name": "Dr D Skryabin"
+    }, 
+    {
+      "id": 82897, 
+      "name": "Dr WJ Wadsworth"
+    }
+  ], 
+  "panel_history": [
+    [
+      "2004-12-15", 
+      "Russell Visiting Panel", 
+      "Deferred"
+    ]
+  ], 
+  "principal_investigator": {
+    "id": 44437, 
+    "name": "Professor PS Russell"
+  }, 
+  "project_partners": [], 
+  "related_grants": [], 
+  "research_topics": [
+    [
+      "Materials processing", 
+      "Materials Processing"
+    ], 
+    [
+      "Materials sciences", 
+      "Materials Characterisation"
+    ], 
+    [
+      "Optics, photonics and lasers", 
+      "Optical Devices and Subsystems"
+    ], 
+    [
+      "Optics, photonics and lasers", 
+      "Optical Phenomena"
+    ], 
+    [
+      "Systems engineering", 
+      "Optical Communications"
+    ]
+  ], 
+  "scheme": "Standard Research", 
+  "sectors": [
+    "Communications", 
+    "Electronics"
+  ], 
+  "start_date": "2005-04-01", 
+  "title": "Photonic Crystal Fibres: Novel Science and New Applications", 
+  "value": 2683755.74
+}

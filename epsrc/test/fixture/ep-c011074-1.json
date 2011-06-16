@@ -1,0 +1,41 @@
+{
+  "abstract": "The ability to build molecules is crucial to molecular science. For new synthetic methods to be accepted as useful tools a demanding set of criteria need to be satisfied; advantages of cost, environmental impact, operational simplicity and reaction efficiency are some of the most important factors to be considered. The focus of this fellowship is to develop new methods to prepare molecules using tools based on transition metal catalysts.<br /><br />The unique reactivities presented by transition metals make them attractive reagents to explore, and to tackle several of the issues discussed above. In particular we plan to use transition metal catalysts to allow the conversion of readily available organic molecules into high value functionalised molecules useful for further manipulation. One of the key aims is to achieve these reactions in a highly selective manner, delivering only single products when the formation of mixtures of several related molecules is possible. We also plan to deliver methods that are easy to perform and that require no special handling techniques.<br /><br />", 
+  "co_investigators": [], 
+  "department": {
+    "name": "Chemistry"
+  }, 
+  "end_date": "2006-12-31", 
+  "further_information": "", 
+  "id": "EP/C011074/1", 
+  "organisation": {
+    "name": "University of Bath", 
+    "website": "http://www.bath.ac.uk"
+  }, 
+  "other_investigators": [], 
+  "panel_history": [
+    [
+      "2005-03-16", 
+      "Chemistry Fellowships Sift Panel 2005", 
+      "Deferred"
+    ]
+  ], 
+  "principal_investigator": {
+    "id": 55264, 
+    "name": "Dr M Willis"
+  }, 
+  "project_partners": [], 
+  "related_grants": [], 
+  "research_topics": [
+    [
+      "Chemical synthesis", 
+      "Chemical Synthetic Methodology"
+    ]
+  ], 
+  "scheme": "Advanced Fellowship", 
+  "sectors": [
+    "Pharmaceuticals and Biotechnology"
+  ], 
+  "start_date": "2005-10-01", 
+  "title": "Using Transition Metal Catalysis to Achieve New Reactivity and Selectivity for Organic Synthesis", 
+  "value": 298347.59
+}
