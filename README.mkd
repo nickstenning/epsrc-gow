@@ -31,7 +31,7 @@ Now install the scraper and its dependencies:
 
 Create a database, or migrate your existing database to the current version:
 
-    $ ./migrate.sh epsrc.db 1
+    $ ./migrate.sh epsrc.db 2
 
 ## Usage
 
