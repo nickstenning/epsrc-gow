@@ -1,2 +1,3 @@
-/scrape
-/grants.db
+/pyenv
+/epsrc.db
+*.egg-info

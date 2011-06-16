@@ -14,55 +14,47 @@ Instead of using the code in this repository, why not download the database gene
 - [Latest database](http://storage.ckan.net/epsrc-gow/grants-20110310.sql.bz2) (SQL format, updated 2011-03-10)
 - [Extra grants detail](http://storage.ckan.net/epsrc-gow/grants-detail-20110311.yaml.bz2) (YAML format, updated 2011-03-11)
 
+## Setup
+
+To get up and running, you will need `python` and `pip`. Instructions for installing `python` are beyond the scope of this document, but you should be able to get `pip` if you don't have it by running:
+
+    $ easy_install pip
+
+If you use `virtualenv`, you might want to create an environment to play around in:
+
+    $ virtualenv --distribute pyenv
+    $ source pyenv/bin/activate
+
+Now install the scraper and its dependencies:
+
+    $ pip install -e . -r requirements.txt
+
+Create a database, or migrate your existing database to the current version:
+
+    $ ./migrate.sh epsrc.db 1
+
 ## Usage
 
-To get a YAML dump of basic grants information for the financial year beginning 1 Apr 1993, run:
+To get a database of basic grants information for the financial year beginning 1 Apr 1993, run:
 
-    $ ./bin/scrape-pastgrants 1993 > epsrc_gow_fy1993.yaml
+    $ epsrc-scrape --basic --year 1993 epsrc.db
 
-More usefully, to download all the information in the EPSRC GOW repository year by year, one might run:
+More usefully, to download all the information in the EPSRC GOW repository (this will take a long time to complete):
 
-    $ mkdir scrape
-    $ for y in $(seq 1985 2011); do
-        ./bin/scrape-pastgrants ${y} > scrape/epsrc_gow_fy${y}.yaml
-      done
+    $ epsrc-scrape epsrc.db
 
-Each grant has a unique grant reference, e.g. `GR/N15764/01`.
+Each grant has a unique grant reference, e.g. `GR/J50118/01`. We can check that the example grant above made it into the database with the following command
 
-To extract the grants into a SQLite database run:
-
-    $ ./bin/db create
-    $ cat scrape/*.yaml | ./bin/db loadscrape
-
-After this command, we can check that the example grant above made it into the database with the following command
-
-    $ ./bin/db lookup GR/N15764/01
-    Looking up grant GR/N15764/01:
-    ---
-    id: GR/N15764/01
-    title: INTERDISCIPLINARY RESEARCH COLLABORATION IN ADVANCED KNOWLEDGE TECHNOLOGIES - AKT
-    value: 7534918.46
-    principal_investigator_id: 14179
-    [...]
+    $ sqlite3 -line epsrc.db "select * from grants where id='GR/J50118/01'"
+                           id = GR/J50118/01
+                        title = USE OF CATALYTIC MEMBRANES FOR IN SITU REACTION AND SEPARATION
+                        value = 114608
+    principal_investigator_id = 40792
+                department_id = 5273
+                   created_at = 2011-06-16 12:36:35.164790
+                  modified_at = 2011-06-16 12:36:35.164800
 
 ## Warnings
 
-This scraper needs a lot of work. At the moment we're only scraping the most basic information about these grants.
-
-## TODO
-
-The next step is to flesh out the `Person`, `Organisation`/`Partner` and `Department` scrapers, and to use these to bulk up the data in the database. At the moment, these scrapers,
-
-    ./bin/scrape-person <person id>
-    ./bin/scrape-partner <organisation id>
-    ./bin/scrape-department <department id>
-
-emit very basic data scraped from Grants on the Web.
-
-## Dependencies
-
-You'll need:
-
-- ruby, obviously
-- the `hpricot`, `mechanize`, and `json` gems
+This scraper needs a lot of work. At the moment we're only scraping the most basic information about grants.
 
