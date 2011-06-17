@@ -115,6 +115,11 @@ class Scraper(object):
         # Research topics
 
         for rt in grant.pop('research_topics'):
+            # Occasionally we get an "Unclassified" grant. There's no point
+            # storing this
+            if len(rt) == 1 and rt[0] == 'Unclassified':
+                continue
+
             # Assert bipartite research topic, simply because the code below
             # assumes it. The database could support an arbitrary tree.
             assert len(rt) == 2
