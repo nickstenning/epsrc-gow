@@ -39,7 +39,7 @@ def _scrape_title(g, el):
 
 def _scrape_pi(g, el):
     pi_el = el.find('a#hlPrincipalInvestigator + a').eq(0)
-    g['principal_investigator'] = pi = {}
+    g['pi'] = pi = {}
     pi['id'] = util.extract_id(pi_el.attr.href, 'Person')
     pi['name'] = pi_el.text()
 
