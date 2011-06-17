@@ -38,6 +38,7 @@ CREATE TABLE research_topics (
     FOREIGN KEY(parent_id) REFERENCES research_topics(id),
     UNIQUE(parent_id,name)
 );
+INSERT INTO research_topics (id, parent_id, name) values (-1, NULL, "Root");
 
 CREATE TABLE grants_research_topics (
     grant_id                    INTEGER,

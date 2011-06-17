@@ -124,7 +124,9 @@ class Scraper(object):
             # assumes it. The database could support an arbitrary tree.
             assert len(rt) == 2
 
-            prt_id = self.update_or_create_research_topic(rt[0], None)
+            # A parent_id of -1 indicates the "Root" topic, as INSERTed by the
+            # migration file 002_up.sql
+            prt_id = self.update_or_create_research_topic(rt[0], -1)
             rt_id = self.update_or_create_research_topic(rt[1], prt_id)
 
             sql = '''insert or ignore into grants_research_topics
@@ -197,12 +199,8 @@ class Scraper(object):
         t = timestamp()
         self.conn.execute(sql, (name, parent_id, t, t))
 
-        if parent_id:
-            sql = 'select id from research_topics where name=? and parent_id=?'
-            (rt_id,) = self.conn.execute(sql, (name, parent_id)).fetchone()
-        else:
-            sql = 'select id from research_topics where name=? and parent_id is null'
-            (rt_id,) = self.conn.execute(sql, (name,)).fetchone()
+        sql = 'select id from research_topics where name=? and parent_id=?'
+        (rt_id,) = self.conn.execute(sql, (name, parent_id)).fetchone()
 
         return rt_id
 
