@@ -127,6 +127,8 @@ def _scrape_org_web(g, el):
             g['organisation']['website'] = href
 
 def _scrape_abstract(g, el):
+    g['abstract'] = ''
+
     ab_el = el.find('#lblAbstract').eq(0)
     if ab_el:
       ab = ab_el.html().strip()
@@ -135,6 +137,8 @@ def _scrape_abstract(g, el):
 
 
 def _scrape_final_report(g, el):
+    g['final_report_summary'] = ''
+
     fr_el = el.find('#lblFinalReportSummary').eq(0)
     if fr_el:
       fr = fr_el.html().strip()
