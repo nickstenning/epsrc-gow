@@ -171,7 +171,7 @@ b = browser = mechanize.Browser()
 
 def scrape_grant_detailed(ref):
     b.open(GRANT_DETAIL_URL % ref)
-    return scrape_grant_detailed_from_html(b.response().read())
+    return scrape_grant_detailed_from_html(ref, b.response().read())
 
 
 def scrape_grant_detailed_from_html(ref, html):
