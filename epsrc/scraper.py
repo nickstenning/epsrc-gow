@@ -181,7 +181,7 @@ class Scraper(object):
         self.conn.execute(sql, (sector, t, t))
 
         sql = 'select id from sectors where name=?'
-        (s_id,) = self.conn.execute(sql (sector,)).fetchone()
+        (s_id,) = self.conn.execute(sql, (sector,)).fetchone()
         return s_id
 
     def update_or_create_research_topic(self, name, parent_id):
@@ -192,8 +192,13 @@ class Scraper(object):
         t = timestamp()
         self.conn.execute(sql, (name, parent_id, t, t))
 
-        sql = 'select id from sectors where name=? and parent_id=?'
-        (rt_id,) = self.conn.execute(sql, (name, parent_id)).fetchone()
+        if parent_id:
+            sql = 'select id from research_topics where name=? and parent_id=?'
+            (rt_id,) = self.conn.execute(sql, (name, parent_id)).fetchone()
+        else:
+            sql = 'select id from research_topics where name=? and parent_id is null'
+            (rt_id,) = self.conn.execute(sql, (name,)).fetchone()
+
         return rt_id
 
     def _update_or_create_object(self, table, **kwargs):
