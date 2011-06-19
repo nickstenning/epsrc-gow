@@ -4,7 +4,7 @@ import sqlite3
 
 from epsrc.scraper import Scraper
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 parser = argparse.ArgumentParser(description='Scrape EPSRC Grants on the Web data.')
 parser.add_argument('database', type=str,
