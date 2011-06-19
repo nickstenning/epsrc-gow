@@ -51,7 +51,7 @@ class Scraper(object):
 
         curs = self.conn.cursor()
         curs.execute('select id from grants')
-        batch = curs.fetchmany()
+        batch = curs.fetchmany(20)
 
         while batch:
             for b in batch:
@@ -61,7 +61,8 @@ class Scraper(object):
                 self._process_grant_detailed(grant)
 
             self.conn.commit()
-            batch = curs.fetchmany()
+            print("  COMMITTED BATCH")
+            batch = curs.fetchmany(20)
 
     def _process_grant_detailed(self, grant):
         curs = self.conn.cursor()
