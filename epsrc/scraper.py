@@ -69,7 +69,14 @@ class Scraper(object):
 
         # First, update PI. We have the id from the scrape.
 
-        self.update_or_create_person(grant.pop('pi'))
+        try:
+            self.update_or_create_person(grant.pop('pi'))
+        except KeyError:
+            f = open('error_grants.txt', 'a')
+            print(grant['id'], file=f)
+            print("ERROR GRANT %s" % grant['id'], file=sys.stderr)
+            f.close()
+            return
 
         # Second, department and organisation. We need to retrieve ids from
         # the database.
