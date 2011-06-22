@@ -1,2 +1,0 @@
-mechanize==0.2.5
-pyquery==0.7

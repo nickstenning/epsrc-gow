@@ -27,7 +27,7 @@ If you use `virtualenv`, you might want to create an environment to play around 
 
 Now install the scraper and its dependencies:
 
-    $ pip install -e . -r requirements.txt
+    $ pip install -e .
 
 Create the database (or migrate your existing database to the current schema version) by running:
 
