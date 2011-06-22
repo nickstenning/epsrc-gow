@@ -11,10 +11,13 @@ parser.add_argument('database', type=str,
                     help='The database to fill or update with scraped data.')
 parser.add_argument('-b', '--basic', action='store_true', default=False,
                     help='Only scrape basic data.')
-parser.add_argument('-d', '--detailed', action='store_true', default=False,
-                    help='Only scrape detailed data (using current database content as starting point).')
 parser.add_argument('-y', '--year', type=int, default=None,
                     help='Only scrape basic data for this financial year.')
+parser.add_argument('-d', '--detailed', action='store_true', default=False,
+                    help='Only scrape detailed data.')
+parser.add_argument('--stdin', action='store_true', default=False,
+                    help='Scrape detailed data only for grants listed on STDIN.')
+
 
 def establish_connection(db):
     conn = sqlite3.connect(db)
@@ -47,7 +50,11 @@ def main():
         else:
             s.scrape_basic()
     elif args.detailed:
-        s.scrape_detailed()
+        if args.stdin:
+            refs = [x.strip() for x in sys.stdin.readlines()]
+            s.scrape_detailed(refs)
+        else:
+            s.scrape_detailed()
     else:
         s.scrape_all()
 

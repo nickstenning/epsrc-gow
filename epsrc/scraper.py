@@ -46,23 +46,36 @@ class Scraper(object):
 
             self.conn.commit()
 
-    def scrape_detailed(self):
+    def scrape_detailed(self, ids=None):
         print("Scraping detailed grants data:", file=sys.stderr)
 
-        curs = self.conn.cursor()
-        curs.execute('select id from grants')
-        batch = curs.fetchmany(20)
+        batch_size = 20
 
-        while batch:
-            for b in batch:
-                id = b[0]
-                print("  %s" % id, file=sys.stderr)
-                grant = scrape_grant_detailed(id)
-                self._process_grant_detailed(grant)
+        if ids:
+            def get_batch():
+                b = ids[:batch_size]
+                del ids[:batch_size]
+                return b if len(b) > 0 else None
 
-            self.conn.commit()
-            print("  COMMITTED BATCH")
-            batch = curs.fetchmany(20)
+        else:
+            curs = self.conn.cursor()
+            curs.execute('select id from grants')
+
+            def get_batch():
+                b = [x[0] for x in curs.fetchmany(batch_size)]
+                return b if len(b) > 0 else None
+
+        for batch in iter(get_batch, None):
+            self.scrape_detailed_batch(batch)
+
+    def scrape_detailed_batch(self, ids):
+        for id in ids:
+            print("  %s" % id, file=sys.stderr)
+            grant = scrape_grant_detailed(id)
+            self._process_grant_detailed(grant)
+
+        self.conn.commit()
+        print("  COMMITTED BATCH", file=sys.stderr)
 
     def _process_grant_detailed(self, grant):
         curs = self.conn.cursor()
