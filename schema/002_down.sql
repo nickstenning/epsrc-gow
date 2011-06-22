@@ -1,5 +1,6 @@
 -- NB: SQLite does not support DROP COLUMN, thus making this migration
 --     *irreversible* in SQLite.
+UPDATE schema SET version=1;
 
 ALTER TABLE grants DROP COLUMN start_date;
 ALTER TABLE grants DROP COLUMN end_date;
