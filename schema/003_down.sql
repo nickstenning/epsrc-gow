@@ -1,6 +1,7 @@
 -- Since this migration *reintroduces* a FK constraint that was relaxed by the
 -- "up" migration, it is very likely that you'll hit foreign key constraint
 -- errors while running it.
+UPDATE schema SET version=2;
 
 -- I've enabled this so that you KNOW you're doing bad things if you reverse
 -- this migration.

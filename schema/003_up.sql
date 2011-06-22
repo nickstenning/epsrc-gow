@@ -1,5 +1,7 @@
 -- Relax foreign key constraint on related_grant_id -- we don't necessarily
 -- have it but it's stupid to throw away the information.
+UPDATE schema SET version=3;
+
 CREATE TABLE grants_related_grants_new (
     grant_id                    INTEGER,
     related_grant_id            INTEGER,
