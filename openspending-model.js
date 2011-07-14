@@ -82,7 +82,7 @@
       "label": "Grant award scheme",
       "type": "classifier",
       "description": "The EPSRC scheme under which the grant was awarded.",
-      "taxonomy": "epsrc-gotw.epsrc-internal.scheme"
+      "taxonomy": "epsrc-gotw:epsrc-internal:scheme"
     },
     "grant_abstract": {
       "default_value": "",
@@ -113,7 +113,7 @@
       "label": "Recipient department",
       "type": "classifier",
       "description": "The department receiving the grant within the recipient institution.",
-      "taxonomy": "epsrc-gotw.recipient.department"
+      "taxonomy": "epsrc-gotw:recipient:department"
     },
     "institution": {
       "fields": [
@@ -128,7 +128,7 @@
       "label": "Recipient institution",
       "type": "classifier",
       "description": "The higher education institution receiving the grant.",
-      "taxonomy": "epsrc-gotw.recipient.institution"
+      "taxonomy": "epsrc-gotw:recipient:institution"
     }
   },
   "views": [
@@ -146,7 +146,7 @@
       "name": "default",
       "dimension": "institution",
       "breakdown": "department",
-      "filters": {"taxonomy": "epsrc-gotw.recipient.institution"}           
+      "filters": {"taxonomy": "epsrc-gotw:recipient:institution"}           
     },   
     {
       "entity": "classifier",
@@ -154,7 +154,7 @@
       "name": "default",
       "dimension": "department",
       "breakdown": "to",
-      "filters": {"taxonomy": "epsrc-gotw.recipient.department"}           
+      "filters": {"taxonomy": "epsrc-gotw:recipient:department"}           
     }, 
     {
       "entity": "dataset",
