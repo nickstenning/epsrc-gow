@@ -39,7 +39,7 @@
     "amount": {
       "default_value": "",
       "description": "",
-      "column": "value",
+      "column": "amount",
       "label": "",
       "datatype": "float",
       "type": "value"
