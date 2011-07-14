@@ -4,7 +4,8 @@
     "name": "epsrc-gotw",
     "label": "EPSRC Grants on the Web", 
     "description": "<p>This dataset will eventually be a complete scrape of the <a href=\"http://www.epsrc.ac.uk/\">Engineering and Physical Sciences Research Council</a>'s <a href=\"http://gow.epsrc.ac.uk/\">Grants on the Web</a>, providing information on public money granted to scientists for work in fields ranging from mathematics to materials science, and from information technology to structural engineering.</p> <p>Currently, it contains EPSRC past grants data (i.e. grants that have completed) from 1985 through to 2010. At last count, this included nearly 36,000 grants, totalling over £6B of funding.</p> <p>The dataset includes not only basic information about grants and the institutions and departments to which they were granted, but also industrial sector and research area classifications, as well as information on co-investigators and related grants.</p> <p>Please also note that the license terms of this data are  unclear, and as such this dataset should not currently be considered \"open data\".</p>",
-    "currency": "GBP"
+    "currency": "GBP",
+    "entry_custom_html": "<h3>This grant elsewhere on the web:</h3><ul><li><a href=\"http://gow.epsrc.ac.uk/ViewGrant.aspx?GrantRef=${entry.grant_reference}\">${entry.grant_reference} on <abbr title=\"Engineering and Physical Sciences Research Council\">EPSRC</abbr> Grants on the Web</a></li><li><a href=\"http://www.google.co.uk/search?q=&quot;${entry.grant_reference}&quot;\">Search for ${entry.grant_reference} on Google</a></li></ul>"
   },
   "mapping": {
     "from": {
